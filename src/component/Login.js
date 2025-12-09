@@ -1,43 +1,31 @@
-import { useState } from "react";
+// import { use, useContext, useState } from "react";
+// import { AuthContext } from "../contexts/Authentication";
+// import { useNavigate } from "react-router-dom";
+import {useLogin} from "../hooks/useLogin";
 
-export default function Login({onLogin}) {
-    const [username, setUser] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('') 
+export default function Login() {
 
-function handleLogin() {
-    if (username === 'admin' && password === '1234') {
-        const userData = {username};
-        localStorage.setItem('user', JSON.stringify(userData));
-        onLogin(username);
-    } else {
-    if (username !== 'admin') {
-            setError('Invalid username');
-        } else if (password !== '1234') {
-            setError('Invalid password');
-        } else {
-            setError('');
-        }
-    }
-}
+    const {username, password, error, setUsername, setPassword, handleSubmit} = useLogin();
 
     return (
         <div>
         <h2>Login form</h2>
-            <form>
-                <input 
+            <div>
+            <input 
                 type="text" 
                 placeholder="Enter your account"
-                onChange={(e) => setUser(e.target.value)}
-                ></input>
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            ></input>
                 <br></br>
-                <input 
+            <input 
                 type="password" 
                 placeholder="Enter your password"
-                onChange={(e) => setPassword(e.target.value)}
-                ></input>
-            </form>
-            <button onClick={handleLogin}>Login</button>
+                value={password}
+                onChange={(e) => setPassword(e.target.value) }
+            ></input>
+            </div>
+            <button onClick={handleSubmit}>Login</button>
             {error && <p style={{color: 'red'}}>{error}</p>}
         </div>
     );

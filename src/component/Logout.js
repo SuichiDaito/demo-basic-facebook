@@ -1,10 +1,7 @@
-function Logout({user, onLogout}) {
+import { useLogout } from "../hooks/useLogout";
 
-    const handleLogout = () => {
-        localStorage.removeItem('user');
-        onLogout(null);
-    }
-
+function Logout() {
+ const { handleLogout } = useLogout();
     return (
         <div>
             <button onClick={handleLogout}>Logout</button>

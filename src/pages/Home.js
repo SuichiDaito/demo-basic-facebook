@@ -1,7 +1,7 @@
-import React, { useCallback, useState, useMemo } from 'react';
-import PostInput from '../component/PostInput';
+import { useCallback, useState, useMemo } from 'react';
 import PostCard from '../component/PostCard';
 import Logout from '../component/Logout';
+import PostInput from '../component/PostInput';
 
 export default function Home({user, onLogout}) {
     const [posts, setPosts] = useState([]);
@@ -16,9 +16,12 @@ export default function Home({user, onLogout}) {
 
     return (
         <div>
-            <h2>Total Likes: {totalLikes}</h2>
+        <h1>Wellcome my website</h1>
             <PostInput addPost={addPost}/>     
-            {posts.map(post => <PostCard key={post.id} post={post} setPosts={setPosts} />)}
+            {posts.map(post => { console.log('post:', post) 
+            return <PostCard key={post.id} post={post} setPosts={setPosts} />})}
+            <br></br>
+            <h2>Total Likes: {totalLikes}</h2>
             <br></br>
             <Logout user={user} onLogout={onLogout} />
         </div>

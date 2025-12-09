@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import Login from "./component/Login";
+import { Route, Routes, Navigate } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
 
-function App() {
 
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
-  }, []);
-  
+function App() {;
   return (
-    <div>
-      <h1>Welcome to the App</h1>
-      {!user ? <Login onLogin={setUser} /> : <Home user={user} onLogout={() => setUser(null)} />}
-    </div>
+     <AppRoutes />
   );
 }
 
