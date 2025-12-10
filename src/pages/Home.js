@@ -15,7 +15,7 @@ export default function Home({user, onLogout}) {
 
     return (
         <div>
-        <h1>Wellcome my website</h1>
+        <h1>Welcome my website</h1>
             <PostInput addPost={addPost}/>     
             {posts.map(post => { console.log('post:', post) 
             return <PostCard key={post.id} post={post} setPosts={setPosts} />})}

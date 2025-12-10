@@ -7,6 +7,6 @@ export function getSavedUser() {
     return savedUser ? JSON.parse(savedUser) : null;
 }
 
-export function clearSavedUser() {
+export function clearUser() {
     localStorage.removeItem('user');
 }   
