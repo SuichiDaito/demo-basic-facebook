@@ -12,7 +12,6 @@ export default function Home({user, onLogout}) {
     const totalLikes = useMemo(() => {
         return posts.reduce((sum, post) => sum + post.liked, 0);
     }, [posts]);
-    ;
 
     return (
         <div>
